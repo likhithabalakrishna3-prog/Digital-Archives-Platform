@@ -1,0 +1,330 @@
+<OAI-PMH xmlns="http://www.openarchives.org/OAI/2.0/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.openarchives.org/OAI/2.0/ http://www.openarchives.org/OAI/2.0/OAI-PMH.xsd">
+<responseDate>2026-06-07T18:18:08Z</responseDate>
+<request identifier="oai:archives.ncbs.res.in:/repositories/2/resources/42" metadataPrefix="oai_ead" verb="GetRecord">https://oai.catalogue.archives.ncbs.res.in/</request>
+<GetRecord>
+<record>
+<header>
+<identifier>oai:archives.ncbs.res.in:/repositories/2/resources/42</identifier>
+<datestamp>2025-05-30T09:16:01Z</datestamp>
+</header>
+<metadata>
+<ead xmlns="urn:isbn:1-931666-22-9" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="urn:isbn:1-931666-22-9 https://www.loc.gov/ead/ead.xsd">
+<eadheader countryencoding="iso3166-1" dateencoding="iso8601" langencoding="iso639-2b" repositoryencoding="iso15511">
+<eadid countrycode="IN" mainagencycode="IN-National Centre for Biological Sciences" url="Archives at NCBS">MS-030</eadid>
+<filedesc>
+<titlestmt>
+<titleproper>
+Ashish Chandola Papers
+<num>MS-030</num>
+</titleproper>
+<author>Nayanika Shome, Anjali JR</author>
+</titlestmt>
+<publicationstmt>
+<publisher>Archives at NCBS</publisher>
+<p id="logostmt">
+<extref xlink:actuate="onLoad" xlink:href="https://collections.archives.ncbs.res.in/server/api/core/bitstreams/ea155c9e-e4ba-40f8-a3c6-09af36af9002/content" xlink:show="embed" xlink:type="simple"/>
+</p>
+<address>
+<addressline>National Centre for Biological Sciences - Tata Institute of Fundamental Research</addressline>
+<addressline>Bangalore, Karnataka 560065</addressline>
+<addressline>Business Number: +9180 6717 6010</addressline>
+<addressline>Business Number: +9180 6717 6011</addressline>
+<addressline>archives@ncbs.res.in</addressline>
+<addressline>
+URL:
+<extptr xlink:href="https://archives.ncbs.res.in/" xlink:show="new" xlink:title="https://archives.ncbs.res.in/" xlink:type="simple"/>
+</addressline>
+</address>
+</publicationstmt>
+</filedesc>
+<profiledesc>
+<creation>
+This finding aid was produced using ArchivesSpace on
+<date>2026-06-07 18:18:08 +0000</date>
+.
+</creation>
+<langusage>
+Description is written in:
+<language langcode="eng" scriptcode="Latn">English, Latin script</language>
+.
+</langusage>
+</profiledesc>
+</eadheader>
+<archdesc level="collection">
+<did>
+<repository>
+<corpname>Archives at NCBS</corpname>
+</repository>
+<unittitle>Ashish Chandola Papers</unittitle>
+<origination label="Creator">
+<persname role="dnr">Chandola, Ashish</persname>
+</origination>
+<origination label="Creator">
+<persname role="Processing Archivist" rules="local" source="local">Ramachandran, Anjali</persname>
+</origination>
+<origination label="Creator">
+<persname role="Processing Archivist" source="ingest">Shome, Nayanika</persname>
+</origination>
+<unitid>MS-030</unitid>
+<unitid type="aspace_uri">/repositories/2/resources/42</unitid>
+<physdesc altrender="whole">
+<extent altrender="materialtype spaceoccupied">0.5 Linear Feet</extent>
+<extent altrender="carrier">1 Hollinger style archive-boxes</extent>
+</physdesc>
+<unitdate datechar="creation" normal="1977/1995" type="inclusive">1977 - 1995</unitdate>
+<physloc id="aspace_d84c9d73a9f06a6b0af580c8345f9cea">Archives at NCBS</physloc>
+<physdesc id="aspace_34b222e6c820d9d5339b7b386b2aae29">Contact sheets and film negatives are in moderate condition. Microfilm slides are in good condition.</physdesc>
+<langmaterial>
+<language langcode="eng" scriptcode="Latn">English</language>
+</langmaterial>
+</did>
+<bioghist id="aspace_ef80091c25c50112239bfeb21559c90a">
+<head>Biographical / Historical</head>
+<p>Ashish Chandola is a wildlife photographer who works independently and collaboratively to document wildlife and ecologically critical habitats in South Asia. He has shot wildlife films for Survival- Anglia in India, Nepal and Sri Lanka. Ashish assisted cinematographer G. Dieter Plage in Sri Lanka in Yala, Wilpattu and Gal Oya National Parks. He has also shot and produced programmes for various Departments of the Ministry of Forests and Environment, Government of India. He has compiled and edited a book in association with TNA Perumal and Shanthi Chandola titled 'Eye in the Jungle', in appreciation of the photographic work and writings of the naturalist, writer and photographer, M. Krishnan.</p>
+</bioghist>
+<userestrict id="aspace_06f13d970bb5e5a06fb56badeac78bda">
+<head>Conditions Governing Use</head>
+<p>Copyright may not have been assigned to Archives, National Centre for Biological Sciences. Permission for reproduction or distribution must be obtained in writing from the Archives at NCBS (archives@ncbs.res.in). The Archives at NCBS makes no representation that it is the copyright owner in all of its collections. The user must obtain all necessary rights and clearances before use of material and material may only be reproduced for academic and non-commercial use.</p>
+</userestrict>
+<prefercite id="aspace_c80a7859c9a523636b693f0797f28135">
+<head>Preferred Citation</head>
+<p>When quoting from this material, kindly use the following format: Collection id/identifier, name of collection, Archives (Eg MS-030-1-1-1-1, Ashish Chandola Papers, Archives at NCBS).</p>
+</prefercite>
+<arrangement id="aspace_579ccf3d0aa195894365ab896a5abd4f">
+<head>Arrangement</head>
+<p>The intellectual arrangement strives to preserve provenance and original order of the papers. Where an original order could not be found, the Archives has applied an order, and folders within sub-series are arranged usually in chronological or alphabetical order. See Scope and Content section for details.</p>
+</arrangement>
+<scopecontent id="aspace_762a6400a198b857a6336b099042b056">
+<head>Content Description</head>
+<p>The Collection is arranged into one series, titled 'Projects', which has been arranged chronologically. The series contains contact sheets, microfilm slides, and photo negatives created by Ashish Chandola. It includes photographs of Billy Arjan Singh at Tiger Haven and the Crocodile (Gharial) Project led by H.R. Bustard in 1977. An elephant capture from an untitled project in Upper Assam in 1979 and the translocation of a rhinoceros in the late 1980s. Besides, photographs of researchers in various field sites, wildlife at national parks and bird sanctuaries and stills from a display of poached tiger skin and bones, all ranging from 1990-1995 are included in this series.</p>
+</scopecontent>
+<accessrestrict id="aspace_c5c9e9ba75e4c5d1bc555fc07e9cd69b">
+<head>Conditions Governing Access</head>
+<p>Collection is open for access unless mentioned in specific folders of the finding aid.</p>
+</accessrestrict>
+<controlaccess>
+<subject source="local">Ecology</subject>
+<subject source="local">Human-wildlife interactions</subject>
+<subject source="Library of Congress Subject Headings">National parks and reserves</subject>
+<geogname source="Local sources">Uttar Pradesh</geogname>
+<subject source="Library of Congress Subject Headings">Tigers</subject>
+<geogname source="Library of Congress Subject Headings">Royal Chitwan National Park (Nepal)</geogname>
+<subject source="Library of Congress Subject Headings">Gharials</subject>
+<subject source="Library of Congress Subject Headings">Rhinoceros</subject>
+<subject source="Library of Congress Subject Headings">Elephants</subject>
+<geogname source="Local sources">National Chambal Sanctuary</geogname>
+<geogname source="Library of Congress Subject Headings">Madhya Pradesh (India)</geogname>
+<geogname source="Local sources">Rajaji National Park</geogname>
+</controlaccess>
+<dsc>
+<c id="aspace_MS-030-1" level="series">
+<did>
+<unittitle>Series 1: Ashish Chandola</unittitle>
+<unitid>MS-030-1</unitid>
+<unitid type="aspace_uri">/repositories/2/archival_objects/13543</unitid>
+<container id="aspace_85a426997069792377ce151d88215425" label="Mixed Materials" type="box">MS-030 Box 1</container>
+<container id="aspace_57992dfb4acda8cb48b6c50906681aa3" parent="aspace_85a426997069792377ce151d88215425" type="folder">Unknown</container>
+</did>
+<c id="aspace_MS-030-1-1" level="subseries">
+<did>
+<unittitle>Sub-Series 1: Projects</unittitle>
+<unitid>MS-030-1-1</unitid>
+<unitid type="aspace_uri">/repositories/2/archival_objects/13544</unitid>
+<container id="aspace_ea6a71c18cbac28ddc45155c78626ce7" label="Mixed Materials" type="box">MS-030 Box 1</container>
+<container id="aspace_dd1e55e2338126ba82739c53d7fc5d99" parent="aspace_ea6a71c18cbac28ddc45155c78626ce7" type="folder">Unknown</container>
+</did>
+<c id="aspace_MS-030-1-1-1-1" level="file">
+<did>
+<unittitle>Billy Arjan Singh-Tiger Haven</unittitle>
+<unitid>MS-030-1-1-1-1</unitid>
+<unitid type="aspace_uri">/repositories/2/archival_objects/13545</unitid>
+<unitdate datechar="creation" normal="1977-07/1977-09" type="inclusive">July 1977 - Sept 1977</unitdate>
+<container id="aspace_4122358be0cb2e1d7b79814367bcc645" label="Mixed Materials" type="box">MS-030 Box 1</container>
+<container id="aspace_b08658cbba9bca0cd94a79d0500304c3" parent="aspace_4122358be0cb2e1d7b79814367bcc645" type="folder">1</container>
+<dao xlink:actuate="onRequest" xlink:href="https://collections.archives.ncbs.res.in/handle/42412/2888" xlink:role="" xlink:show="new" xlink:title="Billy Arjan Singh-Tiger Haven" xlink:type="simple">
+<daodesc>
+<p>Billy Arjan Singh-Tiger Haven</p>
+</daodesc>
+</dao>
+</did>
+<scopecontent id="aspace_862fde85e0f0f59f5ad073ffc4ad93f6">
+<head>Scope and Contents</head>
+<p>Contains 4 contact sheets (36 images/sheet) with corresponding negatives featuring Billy Arjan Singh in Tiger Haven, Uttar Pradesh. Includes photos of conservationist Billy Arjan Singh and helpers with Tara, the tiger, Juilette, Hariet and Prince, the leopards brought up by Singh as well as other wildlife at his farmland in Lakhimpur Kheri.</p>
+</scopecontent>
+<accessrestrict id="aspace_6f108fcf8ee382638547eb7102229688">
+<head>Conditions Governing Access</head>
+<p>Access Level: Open/Online.</p>
+</accessrestrict>
+</c>
+<c id="aspace_MS-030-1-1-1-2" level="file">
+<did>
+<unittitle>Crocodile (Gharial) Project by H.R. Bustard</unittitle>
+<unitid>MS-030-1-1-1-2</unitid>
+<unitid type="aspace_uri">/repositories/2/archival_objects/13546</unitid>
+<unitdate datechar="creation">1977</unitdate>
+<container id="aspace_61364bba4048a06dbdd4b213f00e4888" label="Mixed Materials" type="box">MS-030 Box 1</container>
+<container id="aspace_406de8fe1f826162ccccc927e0a45013" parent="aspace_61364bba4048a06dbdd4b213f00e4888" type="folder">2</container>
+<dao xlink:actuate="onRequest" xlink:href="https://collections.archives.ncbs.res.in/handle/42412/312" xlink:role="" xlink:show="new" xlink:title="Crocodile (Gharial) Project by H.R.Bustard" xlink:type="simple">
+<daodesc>
+<p>Crocodile (Gharial) Project by H.R.Bustard</p>
+</daodesc>
+</dao>
+</did>
+<scopecontent id="aspace_7708a9f928992b8ed38ab7af0cdacd76">
+<head>Scope and Contents</head>
+<p>Contains 1 torn contact sheet (36 images) with corresponding negatives related to the Gharial Project, led by H.R. Bustard and funded by United Nations Development Program (UNDP). Photographs taken at Chitwan, Nepal, feature H.R. Bustard and volunteers at field site, involved in survyeing gharial eggs.</p>
+</scopecontent>
+<accessrestrict id="aspace_a8b981a2e4dcb97489add11c6e676ea3">
+<head>Conditions Governing Access</head>
+<p>Access Level: Open/Online.</p>
+</accessrestrict>
+</c>
+<c id="aspace_MS-030-1-1-1-3" level="file">
+<did>
+<unittitle>Elephant capture - Upper Assam</unittitle>
+<unitid>MS-030-1-1-1-3</unitid>
+<unitid type="aspace_uri">/repositories/2/archival_objects/13547</unitid>
+<unitdate datechar="creation">1979</unitdate>
+<container id="aspace_1cf627ed772f1bdaa20335b020b86f67" label="Mixed Materials" type="box">MS-030 Box 1</container>
+<container id="aspace_6cf45b1b683844592903302e60a7f451" parent="aspace_1cf627ed772f1bdaa20335b020b86f67" type="folder">3</container>
+<dao xlink:actuate="onRequest" xlink:href="https://collections.archives.ncbs.res.in/handle/42412/313" xlink:role="" xlink:show="new" xlink:title="Elephant capture-Upper Assam" xlink:type="simple">
+<daodesc>
+<p>Elephant capture-Upper Assam</p>
+</daodesc>
+</dao>
+</did>
+<scopecontent id="aspace_bf57ca3611df16ed811f42395ee05dcc">
+<head>Scope and Contents</head>
+<p>Contains 4 contact sheets (36 images/sheet) with corresponding negatives of elephant capture in the Upper Assam region of the state of Assam.</p>
+</scopecontent>
+<accessrestrict id="aspace_24c9d877a9fd2cee55727e0e3dc7e10e">
+<head>Conditions Governing Access</head>
+<p>Access Level: Open/Online.</p>
+</accessrestrict>
+</c>
+<c id="aspace_MS-030-1-1-1-4" level="file">
+<did>
+<unittitle>National Parks and associated locations</unittitle>
+<unitid>MS-030-1-1-1-4</unitid>
+<unitid type="aspace_uri">/repositories/2/archival_objects/13548</unitid>
+<unitdate datechar="creation" normal="1979/1980" type="inclusive">ca 1979-80</unitdate>
+<container id="aspace_fd44dacfdfe26447e1cba8694f0b97f7" label="Mixed Materials" type="box">MS-030 Box 1</container>
+<container id="aspace_74cf5470ff75c67799ad9e832bca2f4e" parent="aspace_fd44dacfdfe26447e1cba8694f0b97f7" type="folder">4</container>
+<daogrp xlink:role="representative" xlink:title="National Parks and associated locations" xlink:type="extended">
+<daodesc>
+<p>National Parks and associated locations</p>
+</daodesc>
+<daoloc xlink:href="https://collections.archives.ncbs.res.in/handle/42412/306" xlink:type="locator"/>
+<daoloc xlink:href="https://collections.archives.ncbs.res.in/server/api/core/bitstreams/af8988db-a154-415a-b1b0-cd94ac6090a8/content" xlink:type="locator"/>
+</daogrp>
+</did>
+<scopecontent id="aspace_6fa639f63edbd6dadeea7805fdc082dd">
+<head>Scope and Contents</head>
+<p>Includes 70 slides of photographs featuring male and female Sambar in Bandhavgarh National Park; Indian elephant in Assam; sholas/grasslands in Kundremukh National Park; open-billed storks in Nellapattu Bird Sanctuary, white-bellied sea eagle at Galoya National Park, Sri Lanka, Siberian crane at Bharatpur, Rajasthan, alongside other untitled wildlife.</p>
+</scopecontent>
+<accessrestrict id="aspace_cec70bef4503fa2ee0d24654c69c7489">
+<head>Conditions Governing Access</head>
+<p>Access Level: Open/Online.</p>
+</accessrestrict>
+</c>
+<c id="aspace_MS-030-1-1-1-5" level="file">
+<did>
+<unittitle>Rhino Translocation-India, Nepal</unittitle>
+<unitid>MS-030-1-1-1-5</unitid>
+<unitid type="aspace_uri">/repositories/2/archival_objects/13549</unitid>
+<unitdate datechar="creation" normal="1984/1985" type="inclusive">ca 1984-85</unitdate>
+<container id="aspace_6da11fb9a2345b3903948fef195a8faf" label="Mixed Materials" type="box">MS-030 Box 1</container>
+<container id="aspace_afd449baf20928e47a770f6154dc7720" parent="aspace_6da11fb9a2345b3903948fef195a8faf" type="folder">5</container>
+<dao xlink:actuate="onRequest" xlink:href="https://collections.archives.ncbs.res.in/handle/42412/307" xlink:role="" xlink:show="new" xlink:title="Rhino Translocation-India, Nepal" xlink:type="simple">
+<daodesc>
+<p>Rhino Translocation-India, Nepal</p>
+</daodesc>
+</dao>
+</did>
+<scopecontent id="aspace_8ee2f9165c9dae74b5a28dd08d001905">
+<head>Scope and Contents</head>
+<p>Contains 128 slides featuring the Great Indian one-horned rhinoceros at Royal Chitwan National Park, Nepal; rhino loading at Guwahati; transportation of darted rhinoceros to Dudhwa National Park; radio collaring rhino in stockade prior to release in Dudhwa; arrival and release at stockades at Dudhwa.</p>
+</scopecontent>
+<accessrestrict id="aspace_8077a31918ea19a8d7658aaababe6289">
+<head>Conditions Governing Access</head>
+<p>Access Level: Open/Online.</p>
+</accessrestrict>
+</c>
+<c id="aspace_MS-030-1-1-1-6" level="file">
+<did>
+<unittitle>Researchers in field sites</unittitle>
+<unitid>MS-030-1-1-1-6</unitid>
+<unitid type="aspace_uri">/repositories/2/archival_objects/13550</unitid>
+<unitdate datechar="creation" type="bulk">ca 1990s</unitdate>
+<container id="aspace_aaf50619633755822dc167a7b3ef38ec" label="Mixed Materials" type="box">MS-030 Box 1</container>
+<container id="aspace_f18d3a420ebd5e16e60f381b3fa84b97" parent="aspace_aaf50619633755822dc167a7b3ef38ec" type="folder">6</container>
+<dao xlink:actuate="onRequest" xlink:href="https://collections.archives.ncbs.res.in/handle/42412/308" xlink:role="" xlink:show="new" xlink:title="Researchers in field sites" xlink:type="simple">
+<daodesc>
+<p>Researchers in field sites</p>
+</daodesc>
+</dao>
+</did>
+<scopecontent id="aspace_10a2901cc975395d843faf4d8c95019a">
+<head>Scope and Contents</head>
+<p>Contains 45 microfilm slides with photographs of researchers at various field sites. Includes researchers from Indian Institute of Science (IISc), Bangalore and P. Jackson demarcating plots for vegetational studies in Madumalai, Tamil Nadu; P. Jackson with Bombay Natural History Society (BNHS) researcher Ajay Desai in Mudumalai; Ullas Karanth with team members tracking radio collared tigers; Wildlife Institute of India (WII) diploma class with Ajith Kumar as instructor; researchers Syed Aniul Hussain and Binod Chandra Choudhury of WII at National Chambal Sanctuary for monitoring radio implaned otters; John Singh in the Shivaliks; Ruchi Badola from WII intervieweing Gujjar families in Rajaji National Park, UP.</p>
+</scopecontent>
+<accessrestrict id="aspace_19997ad8b4b60bed0709ca1c32fde878">
+<head>Conditions Governing Access</head>
+<p>Access Level: Open/Online.</p>
+</accessrestrict>
+</c>
+<c id="aspace_MS-030-1-1-1-7" level="file">
+<did>
+<unittitle>Wildlife Institute of India- Otters</unittitle>
+<unitid>MS-030-1-1-1-7</unitid>
+<unitid type="aspace_uri">/repositories/2/archival_objects/13551</unitid>
+<unitdate datechar="creation" type="bulk">ca 1990s</unitdate>
+<container id="aspace_aafe19316676dc7e501cea4480e8eb23" label="Mixed Materials" type="box">MS-030 Box 1</container>
+<container id="aspace_1094cb4858feb7abcbf886670061862c" parent="aspace_aafe19316676dc7e501cea4480e8eb23" type="folder">7</container>
+<dao xlink:actuate="onRequest" xlink:href="https://collections.archives.ncbs.res.in/handle/42412/309" xlink:role="" xlink:show="new" xlink:title="Wildlife Institute of India- Otters" xlink:type="simple">
+<daodesc>
+<p>Wildlife Institute of India- Otters</p>
+</daodesc>
+</dao>
+</did>
+<scopecontent id="aspace_7d0654f4f14b9678485bf9a51a2f67ef">
+<head>Scope and Contents</head>
+<p>10 microfilm slides featuring otters during a field visit to National Chambal Sanctuary by researchers at Wildlife Institute of India (WII).</p>
+</scopecontent>
+<accessrestrict id="aspace_418a270f7129a799b4ba05db7740970a">
+<head>Conditions Governing Access</head>
+<p>Access Level: Open/Online.</p>
+</accessrestrict>
+</c>
+<c id="aspace_MS-030-1-1-1-8" level="file">
+<did>
+<unittitle>Tiger Skin &amp; Bones</unittitle>
+<unitid>MS-030-1-1-1-8</unitid>
+<unitid type="aspace_uri">/repositories/2/archival_objects/13552</unitid>
+<unitdate datechar="creation" normal="1991/1995" type="inclusive">ca 1991-95</unitdate>
+<container id="aspace_caa5d2c2ee554260f358985d98207b59" label="Mixed Materials" type="box">MS-030 Box 1</container>
+<container id="aspace_a3005acd993040606ef098ffefe4ceec" parent="aspace_caa5d2c2ee554260f358985d98207b59" type="folder">8</container>
+<dao xlink:actuate="onRequest" xlink:href="https://collections.archives.ncbs.res.in/handle/42412/310" xlink:role="" xlink:show="new" xlink:title="Tiger Skin &amp; Bones" xlink:type="simple">
+<daodesc>
+<p>Tiger Skin &amp; Bones</p>
+</daodesc>
+</dao>
+</did>
+<scopecontent id="aspace_55c3ef5319ebe8ff655a09fe1b3596e5">
+<head>Scope and Contents</head>
+<p>24 microfilm slides of tiger skin and bones display. Also contains images of deer skin. Includes photographs of Kamal Nath, then Minister of Environment and Forests as well as leader of Project Tiger.</p>
+</scopecontent>
+<accessrestrict id="aspace_05944d1a0c228135cbff0ad00ecb96c7">
+<head>Conditions Governing Access</head>
+<p>Access Level: Open/Online.</p>
+</accessrestrict>
+</c>
+</c>
+</c>
+</dsc>
+</archdesc>
+</ead>
+</metadata>
+</record>
+</GetRecord>
+</OAI-PMH>
