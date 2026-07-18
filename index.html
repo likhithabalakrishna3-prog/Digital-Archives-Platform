@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NCBS Archives Demo</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <header>
+    <h1>Archives at NCBS — TIFR</h1>
+    <p>National Centre for Biological Sciences · Bengaluru, India</p>
+  </header>
+
+  <nav>
+    <a href="#" onclick="navigate('')">Home</a>
+    <a href="#" onclick="navigate('')">Collections</a>
+    <a href="#">Finding Aids</a>
+    <a href="#">Digital Access</a>
+    <a href="#">About</a>
+  </nav>
+
+  <div id="home-view">
+    <div class="hero">
+      <h2>Archival Collections</h2>
+      <p>Explore collections documenting the history of science in contemporary India.</p>
+    </div>
+    <div class="container">
+      <h2 class="section-title">All Collections</h2>
+      <div class="collections-grid" id="collections-list">
+        <div class="loading">Loading collections...</div>
+      </div>
+    </div>
+  </div>
+
+  <div id="collection-view" style="display:none;">
+    <div class="hero">
+      <h2 id="hero-title">Loading...</h2>
+      <p id="hero-description"></p>
+    </div>
+    <div class="stats" id="stats-section"></div>
+    <div class="container" id="main-content"></div>
+    <div class="data-source-note" id="data-source-note"></div>
+  </div>
+
+  <footer>
+    <p>Archives at NCBS-TIFR · Bengaluru, Karnataka, India</p>
+    <p style="margin-top:8px;">
+      Demo collection prepared by <span>Likhitha Balakrishna</span> ·
+      Built with open-source archival standards
+    </p>
+  </footer>
+
+  <script>
+
+  const COLLECTIONS_INDEX = 'metadata/collections.json';
+  let allCollections = [];
+
+  async function init() {
+    try {
+      const res = await fetch(COLLECTIONS_INDEX);
+      if (!res.ok) throw new Error(`Could not load ${COLLECTIONS_INDEX}`);
+      const data = await res.json();
+      allCollections = data.collections;
+      window.addEventListener('hashchange', handleRoute);
+      handleRoute();
+    } catch (e) {
+      document.getElementById('collections-list').innerHTML =
+        `<div class="error"><strong>Error:</strong> ${e.message}</div>`;
+    }
+  }
+
+  function handleRoute() {
+    const hash = window.location.hash.replace('#', '');
+    if (hash.startsWith('collection/')) {
+      const id = hash.replace('collection/', '');
+      openCollection(id);
+    } else {
+      renderHome();
+    }
+  }
+
+  function navigate(hash) {
+    window.location.hash = hash;
+  }
+
+  function renderHome() {
+    document.title = 'NCBS Archives Demo';
+    document.getElementById('home-view').style.display = 'block';
+    document.getElementById('collection-view').style.display = 'none';
+
+    const grid = document.getElementById('collections-list');
+    grid.innerHTML = allCollections.map(c => `
+      <div class="collection-card"
+           onclick="navigate('collection/${c.id}')"
+           style="cursor:pointer;">
+        <div class="meta">
+          ${c.date_range} · ${c.series_count} Series ·
+          ${c.item_count.toLocaleString()} Items
+        </div>
+        <h3>${c.title}</h3>
+        <p>${c.description}</p>
+        <span class="badge" style="margin-top:16px;">EAD XML</span>
+        <span class="badge">${c.repository}</span>
+      </div>
+    `).join('');
+  }
+
+  // ── Open collection ───────────────────────────────────────────────
+  async function openCollection(id) {
+    const meta = allCollections.find(c => c.id === id);
+    if (!meta) { navigate(''); return; }
+
+    document.title = `${meta.title} — NCBS Archives Demo`;
+    document.getElementById('home-view').style.display = 'none';
+    document.getElementById('collection-view').style.display = 'block';
+    document.getElementById('hero-title').textContent = 'Loading...';
+    document.getElementById('hero-description').textContent = '';
+    document.getElementById('stats-section').innerHTML = '';
+    document.getElementById('main-content').innerHTML =
+      '<div class="loading">Fetching collection data...</div>';
+
+    try {
+      const collection = meta.type === 'json'
+        ? await loadFromJSON(meta.source_file)
+        : await loadFromXML(meta.source_file);
+      renderCollection(collection, meta.source_file);
+    } catch (e) {
+      document.getElementById('main-content').innerHTML =
+        `<div class="error"><strong>Error loading collection:</strong> ${e.message}</div>`;
+    }
+  }
+
+  async function loadFromJSON(path) {
+    const res = await fetch(path);
+    if (!res.ok) throw new Error(`HTTP ${res.status}: ${path}`);
+    const data = await res.json();
+    const c  = data.collection;
+    const dc = c.dublin_core;
+    const dateParts = dc['dc:date'].split('/');
+
+    return {
+      id:           c.id,
+      title:        dc['dc:title'],
+      description:  dc['dc:description'],
+      bioghist:     '',
+      repository:   c.repository,
+      preparedBy:   c.prepared_by,
+      created:      c.created,
+      startYear:    dateParts[0],
+      endYear:      dateParts[1],
+      languages:    dc['dc:language']
+                      .map(l => l === 'en' ? 'English' : l === 'hi' ? 'Hindi' : l)
+                      .join(' · '),
+      rights:       dc['dc:rights'],
+      coverage:     dc['dc:coverage'],
+      subjects:     dc['dc:subject'],
+      metadataStd:  c.digital_preservation.metadata_standard,
+      dcVersion:    c.digital_preservation.dublin_core_version,
+      preservation: c.digital_preservation,
+      series:       c.series.map(s => ({
+        id:          s.series_id,
+        title:       s.title,
+        description: s.description || '',
+        dateRange:   s.date_range,
+        extent:      s.extent,
+        itemCount:   s.item_count || 0,
+        digitized:   s.digitized,
+        files:       []
+      }))
+    };
+  }
+
+  // ── Load EAD XML — supports plain EAD and OAI-PMH wrapped EAD ────
+  async function loadFromXML(path) {
+    const res = await fetch(path);
+    if (!res.ok) throw new Error(`HTTP ${res.status}: ${path}`);
+    const xmlText = await res.text();
+
+    const parser = new DOMParser();
+    const xml = parser.parseFromString(xmlText, 'application/xml');
+
+    const getText = (parent, tag) => {
+      const el = parent.getElementsByTagNameNS('*', tag)[0];
+      return el ? el.textContent.trim() : '';
+    };
+
+    const getAll = (parent, tag) =>
+      Array.from(parent.getElementsByTagNameNS('*', tag));
+
+    // getElementsByTagNameNS searches entire tree —
+    // works for both plain EAD and OAI-PMH wrapped EAD
+    const titleproper = getText(xml, 'titleproper');
+    const author      = getText(xml, 'author');
+    const publisher   = getText(xml, 'publisher');
+
+    const archdesc = xml.getElementsByTagNameNS('*', 'archdesc')[0];
+    if (!archdesc) throw new Error('Could not find archdesc element. Check XML structure.');
+
+    const did        = archdesc.getElementsByTagNameNS('*', 'did')[0];
+    const unitid     = getText(did, 'unitid');
+    const unittitle  = getText(did, 'unittitle');
+    const unitdate   = did.getElementsByTagNameNS('*', 'unitdate')[0];
+    const dateNormal = unitdate ? unitdate.getAttribute('normal') || '' : '';
+    const dateParts  = dateNormal.split('/');
+    const startYear  = dateParts[0] || '';
+    const endYear    = dateParts[1] || dateParts[0] || '';
+
+    const extentEl = did.getElementsByTagNameNS('*', 'extent')[0];
+    const extent   = extentEl ? extentEl.textContent.trim() : '';
+
+    // Description — try abstract first, fall back to scopecontent
+    const abstracts = getAll(did, 'abstract');
+    let description = abstracts.map(a => a.textContent.trim()).join(' ');
+    if (!description) {
+      const scopeEl = archdesc.getElementsByTagNameNS('*', 'scopecontent')[0];
+      if (scopeEl) {
+        const scopeP = scopeEl.getElementsByTagNameNS('*', 'p')[0];
+        description  = scopeP ? scopeP.textContent.trim() : '';
+      }
+    }
+
+    const langEl   = did.getElementsByTagNameNS('*', 'language')[0];
+    const language = langEl ? langEl.textContent.trim() : 'English';
+
+    const repoEl     = did.getElementsByTagNameNS('*', 'corpname')[0];
+    const repository = repoEl ? repoEl.textContent.trim() : publisher;
+
+    const useRestrictEl = archdesc.getElementsByTagNameNS('*', 'userestrict')[0];
+    const rightsP       = useRestrictEl
+      ? useRestrictEl.getElementsByTagNameNS('*', 'p')[0]
+      : null;
+    const rights = rightsP ? rightsP.textContent.trim() : 'Contact repository for rights information.';
+
+    // Biography
+    const biogEl   = archdesc.getElementsByTagNameNS('*', 'bioghist')[0];
+    const biogP    = biogEl ? biogEl.getElementsByTagNameNS('*', 'p')[0] : null;
+    const bioghist = biogP ? biogP.textContent.trim() : '';
+
+    // Subjects
+    const controlaccess = archdesc.getElementsByTagNameNS('*', 'controlaccess')[0];
+    const subjects = controlaccess
+      ? [
+          ...getAll(controlaccess, 'subject').map(s => s.textContent.trim()),
+          ...getAll(controlaccess, 'genreform').map(g => g.textContent.trim())
+        ]
+      : [];
+
+    // ── DSC — handle series (c01) and flat file (c) structures ──────
+    const dsc  = archdesc.getElementsByTagNameNS('*', 'dsc')[0];
+    let series = [];
+
+    if (dsc) {
+      const c01s = getAll(dsc, 'c01').filter(c => c.getAttribute('level') === 'series');
+
+      if (c01s.length > 0) {
+        // Standard c01 > c02 series structure
+        series = c01s.map((s, i) => {
+          const sDid      = s.getElementsByTagNameNS('*', 'did')[0];
+          const sTitle    = getText(sDid, 'unittitle');
+          const sId       = getText(sDid, 'unitid');
+          const sDate     = sDid.getElementsByTagNameNS('*', 'unitdate')[0];
+          const sDateText = sDate ? sDate.textContent.trim() : '';
+
+          const fileEls = Array.from(s.getElementsByTagNameNS('*', '*'))
+            .filter(el => el.getAttribute('level') === 'file');
+
+          const files = fileEls.map(f => {
+            const fDid     = f.getElementsByTagNameNS('*', 'did')[0];
+            const fTitle   = getText(fDid, 'unittitle');
+            const fDate    = getText(fDid, 'unitdate');
+            const dao      = f.getElementsByTagNameNS('*', 'dao')[0];
+            const daoHref  = dao
+              ? (dao.getAttributeNS('http://www.w3.org/1999/xlink', 'href') || dao.getAttribute('xlink:href') || '')
+              : '';
+            const daoTitle = dao
+              ? (dao.getAttributeNS('http://www.w3.org/1999/xlink', 'title') || dao.getAttribute('xlink:title') || '')
+              : '';
+            return { title: fTitle, date: fDate, daoHref, daoTitle, description: '', subjects: [] };
+          });
+
+          return {
+            id:          sId || `S${i + 1}`,
+            title:       sTitle,
+            description: '',
+            dateRange:   sDateText,
+            extent:      '',
+            itemCount:   files.length,
+            digitized: true,
+            files
+          };
+        });
+
+      } else {
+        // Flat structure — c elements directly in dsc
+        const flatFiles = Array.from(dsc.getElementsByTagNameNS('*', 'c'))
+          .filter(c => c.getAttribute('level') === 'file');
+
+        const files = flatFiles.map(f => {
+          const fDid        = f.getElementsByTagNameNS('*', 'did')[0];
+          const fTitle      = getText(fDid, 'unittitle');
+          const fDate       = getText(fDid, 'unitdate');
+          const fScope      = f.getElementsByTagNameNS('*', 'scopecontent')[0];
+          const fScopePs    = fScope ? getAll(fScope, 'p') : [];
+          const fDescription = fScopePs
+            .filter(p => !p.getAttribute('id') || !p.getAttribute('id').includes('Annotation'))
+            .map(p => p.textContent.trim()).join(' ');
+          const fControl    = f.getElementsByTagNameNS('*', 'controlaccess')[0];
+          const fSubjects   = fControl
+            ? getAll(fControl, 'subject').map(s => s.textContent.trim())
+            : [];
+          const dao         = f.getElementsByTagNameNS('*', 'dao')[0];
+          const daoHref     = dao
+            ? (dao.getAttributeNS('http://www.w3.org/1999/xlink', 'href') || dao.getAttribute('xlink:href') || '')
+            : '';
+          return { title: fTitle, date: fDate, daoHref, daoTitle: '', description: fDescription, subjects: fSubjects };
+        });
+
+        // Wrap flat files into a single pseudo-series
+        series = [{
+          id:          'S1',
+          title:       'Collection Materials',
+          description,
+          dateRange:   `${startYear}–${endYear}`,
+          extent,
+          itemCount:   files.length,
+          digitized:   false,
+          files
+        }];
+      }
+    }
+
+    return {
+      id:           unitid,
+      title:        unittitle || titleproper,
+      description,
+      bioghist,
+      repository,
+      preparedBy:   author || publisher,
+      created:      new Date().toISOString().split('T')[0],
+      startYear,
+      endYear,
+      languages:    language,
+      rights,
+      coverage:     'India',
+      subjects,
+      metadataStd:  'EAD 2002',
+      dcVersion:    'N/A',
+      preservation: null,
+      series
+    };
+  }
+
+  // ── Render collection ─────────────────────────────────────────────
+  function renderCollection(c, sourcePath) {
+    document.getElementById('hero-title').textContent = c.title;
+    document.getElementById('hero-description').textContent = c.description;
+
+    const totalItems   = c.series.reduce((s, x) => s + (x.itemCount || 0), 0);
+    const digitized    = c.series.filter(x => x.digitized).length;
+    const yearsCovered = c.endYear && c.startYear
+      ? parseInt(c.endYear) - parseInt(c.startYear) : '—';
+
+    document.getElementById('stats-section').innerHTML = `
+      <div class="stat"><h3>${totalItems.toLocaleString()}</h3><p>Archival Items</p></div>
+      <div class="stat"><h3>${yearsCovered}</h3><p>Years Covered</p></div>
+      <div class="stat"><h3>${c.series.length}</h3><p>Series</p></div>
+      <div class="stat"><h3>${digitized}</h3><p>Series Digitized</p></div>
+    `;
+
+    const subjectTags = c.subjects.length
+      ? c.subjects.map(s => `<span class="subject-tag">${s}</span>`).join('')
+      : '<span class="subject-tag">—</span>';
+
+    const biographyHTML = c.bioghist ? `
+      <h2 class="section-title">Biography</h2>
+      <div class="finding-aid">
+        <p style="font-size:14px;line-height:1.8;color:#555;">${c.bioghist}</p>
+      </div>
+    ` : '';
+
+    const seriesCards = c.series.map((s, i) => {
+      const filesHTML = s.files.length
+        ? `<div style="margin-top:12px;">
+            ${s.files.map(f => `
+              <div style="font-size:12px;color:#555;padding:6px 0;border-bottom:1px solid #f0ebe3;">
+                <strong>${f.title}</strong>
+                ${f.date ? `<span style="color:#888;margin-left:8px;">${f.date}</span>` : ''}
+                ${f.description ? `<p style="margin-top:4px;color:#666;font-size:11px;line-height:1.5;">${f.description}</p>` : ''}
+                ${f.subjects && f.subjects.length
+                  ? `<div style="margin-top:4px;">${f.subjects.map(s => `<span class="subject-tag">${s}</span>`).join('')}</div>`
+                  : ''}
+                ${f.daoHref && !f.daoHref.startsWith('file:')
+                  ? `<a href="${f.daoHref}" target="_blank"
+                       style="margin-top:4px;display:inline-block;color:#1a3a2a;font-size:11px;">
+                       View file ↗
+                     </a>`
+                  : ''}
+              </div>
+            `).join('')}
+           </div>`
+        : '';
+
+      return `
+        <div class="series-card">
+          <div class="meta">Series ${i + 1} ${s.dateRange ? '· ' + s.dateRange : ''}</div>
+          <h3>${s.title}</h3>
+          ${s.description ? `<p>${s.description}</p>` : ''}
+          ${filesHTML}
+
+          ${s.files.length > 0
+          ? `<span class="badge" style="margin-top:12px;">✓ Has Files</span>`
+          : `<span class="badge pending" style="margin-top:12px;">No Files Yet</span>`}
+          ${s.files.length > 0 ? `<span class="badge">${s.files.length} items</span>` : ''}
+          ${s.itemCount ? `<span class="badge">${s.itemCount} items</span>` : ''}
+        </div>
+      `;
+    }).join('');
+
+    document.getElementById('main-content').innerHTML = `
+      <div style="margin-bottom:16px;">
+        <a href="#" onclick="navigate('')"
+           style="color:#1a3a2a;font-size:13px;text-decoration:none;">
+          ← Back to all collections
+        </a>
+      </div>
+
+      <h2 class="section-title">Collection Finding Aid</h2>
+      <div class="finding-aid">
+        <h3>Collection Overview</h3>
+        <table>
+          <tr><td>Collection ID</td><td>${c.id}</td></tr>
+          <tr><td>Title</td><td>${c.title}</td></tr>
+          <tr><td>Date Range</td><td>${c.startYear} — ${c.endYear}</td></tr>
+          <tr><td>Repository</td><td>${c.repository}</td></tr>
+          <tr><td>Languages</td><td>${c.languages}</td></tr>
+          <tr><td>Rights</td><td>${c.rights}</td></tr>
+          <tr><td>Metadata Standard</td><td>${c.metadataStd}</td></tr>
+          <tr><td>Prepared By</td><td>${c.preparedBy}</td></tr>
+          <tr><td>Subjects</td>
+            <td><div class="subjects">${subjectTags}</div></td>
+          </tr>
+        </table>
+      </div>
+
+      ${biographyHTML}
+
+      <h2 class="section-title">Collection Series</h2>
+      <div class="series-grid">${seriesCards}</div>
+    `;
+  }
+
+  init();
+  </script>
+
+</body>
+</html>
