@@ -180,4 +180,8 @@ publicly accessible OAI-PMH endpoints for demonstration purposes.
 
 ---
 
+
+## Live Demo 
+https://likhithabalakrishna3-prog.github.io/Digital-Archives-Platform/
+
 *Built with open-source archival standards · Likhitha Balakrishna · 2026*
