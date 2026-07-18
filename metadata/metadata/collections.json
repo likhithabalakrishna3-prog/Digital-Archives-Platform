@@ -1,0 +1,48 @@
+{
+  "collections": [
+    {
+      "id": "NCBS-2026-001",
+      "type": "json",
+      "title": "Pioneers of Biological Sciences in India",
+      "date_range": "1950-2020",
+      "repository": "Archives at NCBS-TIFR",
+      "description": "A collection documenting the contributions of pioneering scientists to biological sciences research in India from 1950 to 2020.",
+      "source_file": "metadata/collection-metadata.json",
+      "item_count": 1200,
+      "series_count": 3
+    },
+    {
+      "id": "COVID-IND-2020",
+      "type": "xml",
+      "title": "COVID-19 Scientific Response in India Collection",
+      "date_range": "2020-2021",
+      "repository": "Allen Doe Research Center",
+      "description": "Documents research, laboratory work, public health communication, and outreach activities undertaken during the COVID-19 pandemic between 2020 and 2021.",
+      "source_file": "ead-xml/COVIDIND2020_ead.xml",
+      "item_count": 1,
+      "series_count": 0
+    },
+    {
+      "id": "MS-030",
+      "type": "xml",
+      "title": "Ashish Chandola Papers",
+      "date_range": "1977-1995",
+      "repository": "Part of the Archives at NCBS Repository",
+      "description": "The Collection is arranged into one series, titled ‘Projects’, which has been arranged chronologically. The series contains contact sheets, microfilm slides, and photo negatives created by Ashish Chandola. It includes photographs of Billy Arjan Singh at Tiger Haven and the Crocodile (Gharial) Project led by H.R. Bustard in 1977. An elephant capture from an untitled project in Upper Assam in 1979 and the translocation of a rhinoceros in the late 1980s. Besides, photographs of researchers in various field sites, wildlife at national parks and bird sanctuaries and stills from a display of poached tiger skin and bones, all ranging from 1990-1995 are included in this series.",
+      "source_file": "ead-xml/oai.xml",
+      "item_count": 8,
+      "series_count": 1
+    },
+     {
+      "id": "IWA0784",
+      "type": "xml",
+      "title": "Ernest Rodriguez papers",
+      "date_range": "1910-2014",
+      "repository": "Part of the Allen Doe Research Center Repository",
+      "description": "Davenport civil rights and Chicano activist, born in the predominantly Mexican settlement of Holy City in Bettendorf, Iowa.",
+      "source_file": "ead-xml/IWA0784_20260607_182502_UTC__ead.xml",
+      "item_count": 1,
+      "series_count": 6
+    }
+  ]
+}
