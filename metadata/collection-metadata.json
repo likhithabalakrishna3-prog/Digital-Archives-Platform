@@ -1,0 +1,88 @@
+{
+  "collection": {
+    "id": "NCBS-2026-001",
+    "title": "Pioneers of Biological Sciences in India Collection",
+    "repository": "Archives at NCBS-TIFR",
+    "created": "2026-05-11",
+    "prepared_by": "Likhitha Balakrishna",
+    "dublin_core": {
+      "dc:title": "Pioneers of Biological Sciences in India Collection",
+      "dc:creator": "Archives at NCBS-TIFR",
+      "dc:subject": [
+        "Biological Sciences",
+        "History of Science",
+        "India",
+        "NCBS",
+        "TIFR",
+        "Research History"
+      ],
+      "dc:description": "A collection documenting the contributions of pioneering scientists to biological sciences research in India from 1950 to 2020.",
+      "dc:publisher": "National Centre for Biological Sciences, TIFR",
+      "dc:date": "1950/2020",
+      "dc:type": "Collection",
+      "dc:format": [
+        "text/plain",
+        "image/jpeg",
+        "application/pdf"
+      ],
+      "dc:language": [
+        "en",
+        "hi"
+      ],
+      "dc:coverage": "India",
+      "dc:rights": "Copyright NCBS-TIFR. Permission required for publication."
+    },
+    "series": [
+      {
+        "series_id": "S1",
+        "title": "Personal Correspondence",
+        "description": "Letters, telegrams and personal communications between pioneering scientists and their contemporaries across Indian and international institutions.",
+        "date_range": "1950-1990",
+        "extent": "1 linear foot",
+        "item_count": 450,
+        "formats": ["letters", "telegrams", "postcards"],
+        "digitized": true,
+        "digitization_standard": "TIFF 600dpi",
+        "preservation_format": "PDF/A",
+        "access_format": "PDF"
+      },
+      {
+        "series_id": "S2",
+        "title": "Research Notes and Manuscripts",
+        "description": "Handwritten and typed research notes, draft manuscripts, laboratory notebooks, and field notes documenting original scientific inquiry across multiple disciplines.",
+        "date_range": "1955-2010",
+        "extent": "1.5 linear feet",
+        "item_count": 350,
+        "formats": ["handwritten notes", "typed manuscripts", "laboratory notebooks", "field notes"],
+        "digitized": false,
+        "preservation_note": "Acid-free folders, climate controlled storage"
+      },
+      {
+        "series_id": "S3",
+        "title": "Photographs and Visual Materials",
+        "description": "Photographs documenting field expeditions, laboratory settings, conferences, and institutional life across six decades of biological sciences research in India.",
+        "date_range": "1960-2020",
+        "extent": "0.5 linear feet",
+        "item_count": 400,
+        "formats": ["black and white prints", "color prints", "slides", "negatives"],
+        "digitized": true,
+        "digitization_standard": "TIFF 1200dpi",
+        "preservation_format": "TIFF",
+        "access_format": "JPEG"
+      }
+    ],
+    "digital_preservation": {
+      "system": "ArchivesSpace",
+      "storage_backend": "DSpace",
+      "checksum_algorithm": "SHA-256",
+      "backup_schedule": "daily",
+      "backup_locations": [
+        "primary_server",
+        "offsite_backup",
+        "cloud_storage"
+      ],
+      "metadata_standard": "EAD 2002",
+      "dublin_core_version": "1.1"
+    }
+  }
+}
